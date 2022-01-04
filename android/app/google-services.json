@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "198330410477",
+    "project_id": "platzitrips-9b5e6",
+    "storage_bucket": "platzitrips-9b5e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198330410477:android:415d17bfdd45ec42f833e4",
+        "android_client_info": {
+          "package_name": "com.example.platzitrips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198330410477-m6dl2655fb4qftlguvvaul3di4aab38d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.platzitrips",
+            "certificate_hash": "5f8a291e3e43fce1f3018652d24820a12ac59bdf"
+          }
+        },
+        {
+          "client_id": "198330410477-4pavtn4dlnpjst1q02q3enrq7ugo105r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxRwQBtYfTbGFrDys2ELj5lgRQbz7Gx7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198330410477-4pavtn4dlnpjst1q02q3enrq7ugo105r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
