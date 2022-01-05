@@ -1,8 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/Place/model/place.dart';
 import 'package:platzi_trips_app/Place/ui/widgets/card_image.dart';
 import 'package:platzi_trips_app/Place/ui/widgets/title_input_location.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 import 'package:platzi_trips_app/widgets/button_purple.dart';
 import 'package:platzi_trips_app/widgets/gradient_back.dart';
 import 'package:platzi_trips_app/widgets/text_input.dart';
@@ -21,10 +24,12 @@ class AddPlaceScreen extends StatefulWidget{
 }
 
 class _AddPlaceScreen extends State<AddPlaceScreen>{
+  final _controllerTitlePlace = TextEditingController();
+  final _controllerDescriptionPlace = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final _controllerTitlePlace = TextEditingController();
-    final _controllerDescriptionPlace = TextEditingController();
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -93,8 +98,15 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
                   child: ButtonPurple(
                       buttonText: "Add Place",
                       onPressed: () {
+                        userBloc.updatePlaceData(Place(
+                          name: _controllerTitlePlace.text,
+                          description: _controllerDescriptionPlace.text,
+                          likes: 0,
 
-
+                        )).whenComplete(() {
+                          print("TERMINO");
+                          Navigator.pop(context);
+                        });
                   }
                   ),
                 ),

@@ -6,15 +6,15 @@ class Place {
   String description;
   String urlImage;
   int likes;
-  //User userOwner;
+  User? userOwner;
 
   Place({
     Key? key,
     this.id,
     required this.name,
     required this.description,
-    required this.urlImage,
+    this.urlImage="https://imgur.com/gallery/r374R",
     this.likes = 0,
-    //required this.userOwner
+    this.userOwner
 });
 }
