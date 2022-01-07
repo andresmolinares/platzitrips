@@ -6,7 +6,8 @@ class Place {
   String description;
   String urlImage;
   int likes;
-  User? userOwner;
+  bool liked;
+  //User? userOwner;
 
   Place({
     Key? key,
@@ -15,6 +16,7 @@ class Place {
     required this.description,
     this.urlImage="https://imgur.com/gallery/r374R",
     this.likes = 0,
-    this.userOwner
+    this.liked = false,
+    //this.userOwner
 });
 }

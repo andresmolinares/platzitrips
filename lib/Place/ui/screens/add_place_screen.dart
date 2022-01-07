@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:platzi_trips_app/Place/model/place.dart';
@@ -98,16 +99,32 @@ class _AddPlaceScreen extends State<AddPlaceScreen>{
                   child: ButtonPurple(
                       buttonText: "Add Place",
                       onPressed: () {
-                        userBloc.updatePlaceData(Place(
-                          name: _controllerTitlePlace.text,
-                          description: _controllerDescriptionPlace.text,
-                          likes: 0,
+                        userBloc.currentUser().then((currentUser){
+                          if(currentUser != null){
+                            String uid = currentUser.uid;
+                            String path ="$uid/${_controllerTitlePlace.text}_${DateTime.now().toString()}.jpg";
 
-                        )).whenComplete(() {
-                          print("TERMINO");
-                          Navigator.pop(context);
+                            userBloc.uploadFile(path, widget.image!)
+                            .then((uploadTask){
+                              uploadTask.then((snapshot){
+                                snapshot.ref.getDownloadURL().then((urlImage){
+                                  print("Url: $urlImage");
+                                  userBloc.updatePlaceData(Place(
+                                    name: _controllerTitlePlace.text,
+                                    description: _controllerDescriptionPlace.text,
+                                    urlImage: urlImage,
+                                    likes: 0,
+
+                                  )).whenComplete(() {
+                                    print("TERMINO");
+                                    Navigator.pop(context);
+                                  });
+                                });
+                              });
+                            });
+                          }
                         });
-                  }
+                      }
                   ),
                 ),
               ],

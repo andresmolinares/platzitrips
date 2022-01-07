@@ -21,6 +21,10 @@ class FirebaseAuthAPI {
     // Once signed in, return the UserCredential
     return user;
   }
+  //Metodo para obtener el usuario actualmente logueado
+  Future<User?> currentUser() async {
+    return _auth.currentUser;
+  }
   void signOut() async {
     await googleSignIn.signOut().then((value) => print("Sesion de Google cerrada"));
     await _auth.signOut().then((value) => print("Sesión de Firebase Cerrada"));
